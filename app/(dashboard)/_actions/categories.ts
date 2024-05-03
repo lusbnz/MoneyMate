@@ -7,7 +7,7 @@ import {
   DeleteCategorySchema,
   DeleteCategorySchemaType,
 } from "@/schema/categories";
-import { currentUser } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
 export async function CreateCategory(form: CreateCategorySchemaType) {
