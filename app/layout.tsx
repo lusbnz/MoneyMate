@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { useTranslation } from 'next-i18next';
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -8,8 +9,8 @@ import { Toaster } from "@/components/ui/sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Money Tracker",
-  description: "Money Tracker",
+  title: "Money Mate",
+  description: "Money Mate",
 };
 
 export default function RootLayout({
@@ -17,10 +18,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { i18n } = useTranslation();
   return (
     <ClerkProvider>
       <html
-        lang="en"
+        lang={i18n.language}
         className="dark"
         style={{
           colorScheme: "dark",
