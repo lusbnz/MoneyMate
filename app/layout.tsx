@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { useTranslation } from 'next-i18next';
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -18,11 +17,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { i18n } = useTranslation();
   return (
     <ClerkProvider>
       <html
-        lang={i18n.language}
+        lang="en"
         className="dark"
         style={{
           colorScheme: "dark",

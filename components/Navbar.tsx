@@ -9,7 +9,6 @@ import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
-import LanguageSwitcher from "./LanguageSwitcherBtn";
 
 function Navbar() {
   return (
@@ -56,7 +55,6 @@ function MobileNavbar() {
           <LogoMobile />
         </div>
         <div className="flex items-center gap-2">
-          <LanguageSwitcher />
           <ThemeSwitcherBtn />
           <UserButton afterSignOutUrl="/sign-in" />
         </div>
@@ -82,7 +80,6 @@ function DesktopNavbar() {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <LanguageSwitcher />
           <ThemeSwitcherBtn />
           <UserButton afterSignOutUrl="/sign-in" />
         </div>
