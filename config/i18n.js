@@ -1,9 +1,9 @@
 import NextTranslate from 'next-translate'
 
 export default NextTranslate({
-    locales: ['en', 'vi'],
-    defaultLocale: 'en',
+    locales: ['vi', 'en'],
+    defaultLocale: 'vi',
     pages: {
-        '*': ['translation'],
+        '*': ['locales'],
     },
 })

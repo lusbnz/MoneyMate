@@ -25,7 +25,7 @@ export async function GET(request: Request) {
   const categories = await prisma.category.findMany({
     where: {
       userId: user.id,
-      ...(type && { type }), // include type in the filters if it's defined
+      ...(type && { type }),
     },
     orderBy: {
       name: "asc",

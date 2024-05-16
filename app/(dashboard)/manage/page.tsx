@@ -23,24 +23,22 @@ import React from "react";
 function page() {
   return (
     <>
-      {/* HEADER */}
       <div className="border-b bg-card">
         <div className="container flex flex-wrap items-center justify-between gap-6 py-8">
           <div>
-            <p className="text-3xl font-bold">Manage</p>
+            <p className="text-3xl font-bold">Quản lý</p>
             <p className="text-muted-foreground">
-              Manage your account settings and categories
+              Quản lí cài đặt tài khoản và danh mục của bạn
             </p>
           </div>
         </div>
       </div>
-      {/* END HEDER */}
       <div className="container flex flex-col gap-4 p-4">
         <Card>
           <CardHeader>
-            <CardTitle>Currency</CardTitle>
+            <CardTitle>Đơn vị tiền tệ</CardTitle>
             <CardDescription>
-              Set your default currency for transactions
+              Thiết lập đơn vị tiền tệ cho giao dịch
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -77,9 +75,9 @@ function CategoryList({ type }: { type: TransactionType }) {
                 <TrendingUp className="h-12 w-12 items-center rounded-lg bg-emerald-400/10 p-2 text-emerald-500" />
               )}
               <div>
-                {type === "income" ? "Incomes" : "Expenses"} categories
+                Danh mục {type === "income" ? "Thu nhập" : "Chi tiêu"}
                 <div className="text-sm text-muted-foreground">
-                  Sorted by name
+                  Sắp xếp theo tên
                 </div>
               </div>
             </div>
@@ -90,7 +88,7 @@ function CategoryList({ type }: { type: TransactionType }) {
               trigger={
                 <Button className="gap-2 text-sm">
                   <PlusSquare className="h-4 w-4" />
-                  Create category
+                  Tạo danh mục mới
                 </Button>
               }
             />
@@ -100,7 +98,7 @@ function CategoryList({ type }: { type: TransactionType }) {
         {!dataAvailable && (
           <div className="flex h-40 w-full flex-col items-center justify-center">
             <p>
-              No
+              Thứ tự
               <span
                 className={cn(
                   "m-1",
@@ -109,11 +107,11 @@ function CategoryList({ type }: { type: TransactionType }) {
               >
                 {type}
               </span>
-              categories yet
+              Không tồn tại danh mục nào
             </p>
 
             <p className="text-sm text-muted-foreground">
-              Create one to get started
+              Tạo một danh mục để bắt đầu
             </p>
           </div>
         )}
@@ -146,7 +144,7 @@ function CategoryCard({ category }: { category: Category }) {
             variant={"secondary"}
           >
             <TrashIcon className="h-4 w-4" />
-            Remove
+            Xóa
           </Button>
         }
       />

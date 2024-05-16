@@ -73,17 +73,17 @@ function CategoriesCard({
     <Card className="h-80 w-full col-span-6">
       <CardHeader>
         <CardTitle className="grid grid-flow-row justify-between gap-2 text-muted-foreground md:grid-flow-col">
-          {type === "income" ? "Incomes" : "Expenses"} by category
+          Danh mục {type === "income" ? "Thu nhập" : "Chi tiêu"}
         </CardTitle>
       </CardHeader>
 
       <div className="flex items-center justify-between gap-2">
         {filteredData.length === 0 && (
           <div className="flex h-60 w-full flex-col items-center justify-center">
-            No data for the selected period
+            Không có dữ liệu trong khoảng thời gian được chọn
             <p className="text-sm text-muted-foreground">
-              Try selecting a different period or try adding new{" "}
-              {type === "income" ? "incomes" : "expenses"}
+              Thử chọn một khoảng thời gian khác hoặc tạo mới
+              {type === "income" ? "thu nhập" : "chi tiêu"}
             </p>
           </div>
         )}

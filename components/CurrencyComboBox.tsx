@@ -48,7 +48,7 @@ export function CurrencyComboBox() {
   const mutation = useMutation({
     mutationFn: UpdateUserCurrency,
     onSuccess: (data: UserSettings) => {
-      toast.success(`Currency updated successuflly 🎉`, {
+      toast.success(`Cập nhật đơn vị tiền tệ thành công 🎉`, {
         id: "update-currency",
       });
 
@@ -58,7 +58,7 @@ export function CurrencyComboBox() {
     },
     onError: (e) => {
       console.error(e);
-      toast.error("Something went wrong", {
+      toast.error("Có lỗi xảy ra, vui lòng thử lại", {
         id: "update-currency",
       });
     },
@@ -67,11 +67,11 @@ export function CurrencyComboBox() {
   const selectOption = React.useCallback(
     (currency: Currency | null) => {
       if (!currency) {
-        toast.error("Please select a currency");
+        toast.error("Vui lòng chọn đơn vị tiền tệ");
         return;
       }
 
-      toast.loading("Updating currency...", {
+      toast.loading("Đơn vị tiền tệ đang được cập nhật...", {
         id: "update-currency",
       });
 
@@ -90,7 +90,7 @@ export function CurrencyComboBox() {
               className="w-full justify-start"
               disabled={mutation.isPending}
             >
-              {selectedOption ? <>{selectedOption.label}</> : <>Set currency</>}
+              {selectedOption ? <>{selectedOption.label}</> : <>Chọn đơn vị tiền tệ</>}
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-[200px] p-0" align="start">
@@ -110,7 +110,7 @@ export function CurrencyComboBox() {
             className="w-full justify-start"
             disabled={mutation.isPending}
           >
-            {selectedOption ? <>{selectedOption.label}</> : <>Set currency</>}
+            {selectedOption ? <>{selectedOption.label}</> : <>Chọn đơn vị tiền tệ</>}
           </Button>
         </DrawerTrigger>
         <DrawerContent>
@@ -132,9 +132,9 @@ function OptionList({
 }) {
   return (
     <Command>
-      <CommandInput placeholder="Filter currency..." />
+      <CommandInput placeholder="Lọc theo đơn vị tiền tệ..." />
       <CommandList>
-        <CommandEmpty>No results found.</CommandEmpty>
+        <CommandEmpty>Không tìm thấy kết quả.</CommandEmpty>
         <CommandGroup>
           {Currencies.map((currency: Currency) => (
             <CommandItem
@@ -143,7 +143,7 @@ function OptionList({
               onSelect={(value) => {
                 setSelectedOption(
                   Currencies.find((priority) => priority.value === value) ||
-                    null
+                  null
                 );
                 setOpen(false);
               }}

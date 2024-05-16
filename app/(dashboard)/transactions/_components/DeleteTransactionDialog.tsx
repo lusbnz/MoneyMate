@@ -27,7 +27,7 @@ function DeleteTransactionDialog({ open, setOpen, transactionId }: Props) {
   const deleteMutation = useMutation({
     mutationFn: DeleteTransaction,
     onSuccess: async () => {
-      toast.success("Transaction deleted successfully", {
+      toast.success("Xóa giao dịch thành công", {
         id: transactionId,
       });
 
@@ -36,7 +36,7 @@ function DeleteTransactionDialog({ open, setOpen, transactionId }: Props) {
       });
     },
     onError: () => {
-      toast.error("Something went wrong", {
+      toast.error("Có lỗi xảy ra, vui lòng thử lại", {
         id: transactionId,
       });
     },
@@ -45,23 +45,22 @@ function DeleteTransactionDialog({ open, setOpen, transactionId }: Props) {
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogTitle>Bạn có chắc chắn muốn xóa?</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            transaction
+            Hành đồng này sẽ không thể hoàn tác. Nó sẽ xóa giao dịch của bạn ngay lập tức
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>Hủy</AlertDialogCancel>
           <AlertDialogAction
             onClick={() => {
-              toast.loading("Deleting transaction...", {
+              toast.loading("Đang xóa giao dịch", {
                 id: transactionId,
               });
               deleteMutation.mutate(transactionId);
             }}
           >
-            Continue
+            Tiếp tục
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

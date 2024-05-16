@@ -45,7 +45,7 @@ function History({ userSettings }: { userSettings: UserSettings }) {
 
   return (
     <div className="container">
-      <h2 className="mt-12 text-3xl font-bold">History</h2>
+      <h2 className="mt-12 text-3xl font-bold">Lịch sử</h2>
       <Card className="col-span-12 mt-2 w-full">
         <CardHeader className="gap-2">
           <CardTitle className="grid grid-flow-row justify-between gap-2 md:grid-flow-col">
@@ -62,14 +62,14 @@ function History({ userSettings }: { userSettings: UserSettings }) {
                 className="flex items-center gap-2 text-sm"
               >
                 <div className="h-4 w-4 rounded-full bg-emerald-500"></div>
-                Income
+                Thu nhập
               </Badge>
               <Badge
                 variant={"outline"}
                 className="flex items-center gap-2 text-sm"
               >
                 <div className="h-4 w-4 rounded-full bg-red-500"></div>
-                Expense
+                Chi tiêu
               </Badge>
             </div>
           </CardTitle>
@@ -142,14 +142,14 @@ function History({ userSettings }: { userSettings: UserSettings }) {
                   />
                   <Bar
                     dataKey={"income"}
-                    label="Income"
+                    label="Thu nhập"
                     fill="url(#incomeBar)"
                     radius={4}
                     className="cursor-pointer"
                   />
                   <Bar
                     dataKey={"expense"}
-                    label="Expense"
+                    label="Chi tiêu"
                     fill="url(#expenseBar)"
                     radius={4}
                     className="cursor-pointer"
@@ -165,9 +165,9 @@ function History({ userSettings }: { userSettings: UserSettings }) {
             )}
             {!dataAvailable && (
               <Card className="flex h-[300px] flex-col items-center justify-center bg-background">
-                No data for the selected period
+                Không có dữ liệu trong khoảng thời gian đã chọn
                 <p className="text-sm text-muted-foreground">
-                  Try selecting a different period or adding new transactions
+                  Vui lòng chọn lại khoảng thời gian hoặc tạo giao dịch mới
                 </p>
               </Card>
             )}
@@ -190,21 +190,21 @@ function CustomTooltip({ active, payload, formatter }: any) {
     <div className="min-w-[300px] rounded border bg-background p-4">
       <TooltipRow
         formatter={formatter}
-        label="Expense"
+        label="Chi tiêu"
         value={expense}
         bgColor="bg-red-500"
         textColor="text-red-500"
       />
       <TooltipRow
         formatter={formatter}
-        label="Income"
+        label="Thu nhập"
         value={income}
         bgColor="bg-emerald-500"
         textColor="text-emerald-500"
       />
       <TooltipRow
         formatter={formatter}
-        label="Balance"
+        label="Ngân sách"
         value={income - expense}
         bgColor="bg-gray-100"
         textColor="text-foreground"

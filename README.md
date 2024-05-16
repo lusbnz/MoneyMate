@@ -1,4 +1,3 @@
-🛠️ Stack 
 - Nextjs 14: API routes and ServerActions
 - Auth with Clerk
 - Typescript
@@ -8,7 +7,8 @@
 - React-query
 - Recharts
 
-📗 Features
+---
+
 - Transaction Management
 - Category Statistics
 - Historical Data Aggregates

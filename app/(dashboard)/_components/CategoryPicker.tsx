@@ -33,7 +33,6 @@ function CategoryPicker({ type, onChange }: Props) {
 
   useEffect(() => {
     if (!value) return;
-    // when the value changes, call onChange callback
     onChange(value);
   }, [onChange, value]);
 
@@ -67,7 +66,7 @@ function CategoryPicker({ type, onChange }: Props) {
           {selectedCategory ? (
             <CategoryRow category={selectedCategory} />
           ) : (
-            "Select category"
+            "Lựa chọn danh mục"
           )}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
@@ -81,9 +80,9 @@ function CategoryPicker({ type, onChange }: Props) {
           <CommandInput placeholder="Search category..." />
           <CreateCategoryDialog type={type} successCallback={successCallback} />
           <CommandEmpty>
-            <p>Category not found</p>
+            <p>Không tìm thấy danh mục</p>
             <p className="text-xs text-muted-foreground">
-              Tip: Create a new category
+              Tip: Tạo một danh mục mới
             </p>
           </CommandEmpty>
           <CommandGroup>

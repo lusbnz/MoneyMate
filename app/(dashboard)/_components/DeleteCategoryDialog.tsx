@@ -30,7 +30,7 @@ function DeleteCategoryDialog({ category, trigger }: Props) {
   const deleteMutation = useMutation({
     mutationFn: DeleteCategory,
     onSuccess: async () => {
-      toast.success("Category deleted successfully", {
+      toast.success("Xóa danh mục thành công", {
         id: categoryIdentifier,
       });
 
@@ -39,7 +39,7 @@ function DeleteCategoryDialog({ category, trigger }: Props) {
       });
     },
     onError: () => {
-      toast.error("Something went wrong", {
+      toast.error("Có lỗi xảy ra, vui lòng thử lại", {
         id: categoryIdentifier,
       });
     },
@@ -49,17 +49,16 @@ function DeleteCategoryDialog({ category, trigger }: Props) {
       <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogTitle>Bạn có chắc chắn muốn xóa?</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            category
+            Hành đồng này sẽ không thể hoàn tác. Nó sẽ xóa giao dịch của bạn ngay lập tức
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
             onClick={() => {
-              toast.loading("Deleting category...", {
+              toast.loading("Đang xóa giao dịch...", {
                 id: categoryIdentifier,
               });
               deleteMutation.mutate({
@@ -68,7 +67,7 @@ function DeleteCategoryDialog({ category, trigger }: Props) {
               });
             }}
           >
-            Continue
+            Tiếp tục
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
