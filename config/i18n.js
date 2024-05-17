@@ -4,6 +4,6 @@ export default NextTranslate({
     locales: ['vi', 'en'],
     defaultLocale: 'vi',
     pages: {
-        '*': ['locales'],
+        '*': ['translation'],
     },
 })
