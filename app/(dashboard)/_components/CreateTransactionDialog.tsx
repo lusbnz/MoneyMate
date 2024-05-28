@@ -127,7 +127,7 @@ function CreateTransactionDialog({ trigger, type }: Props) {
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>Mô tả</FormLabel>
                   <FormControl>
                     <Input defaultValue={""} {...field} />
                   </FormControl>
