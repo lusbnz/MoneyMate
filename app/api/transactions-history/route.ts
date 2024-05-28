@@ -45,7 +45,7 @@ async function getTransactionsHistory(userId: string, from: Date, to: Date) {
     },
   });
   if (!userSettings) {
-    throw new Error("user settings not found");
+    throw new Error("Không tìm thấy cài đặt người dùng");
   }
 
   const formatter = GetFormatterForCurrency(userSettings.currency);
@@ -65,7 +65,6 @@ async function getTransactionsHistory(userId: string, from: Date, to: Date) {
 
   return transactions.map((transaction) => ({
     ...transaction,
-    // lets format the amount with the user currency
     formattedAmount: formatter.format(transaction.amount),
   }));
 }

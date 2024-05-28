@@ -22,14 +22,12 @@ export async function DeleteTransaction(id: string) {
   }
 
   await prisma.$transaction([
-    // Delete transaction from db
     prisma.transaction.delete({
       where: {
         id,
         userId: user.id,
       },
     }),
-    // Update month history
     prisma.monthHistory.update({
       where: {
         day_month_year_userId: {
@@ -52,7 +50,6 @@ export async function DeleteTransaction(id: string) {
         }),
       },
     }),
-    // Update year history
     prisma.yearHistory.update({
       where: {
         month_year_userId: {

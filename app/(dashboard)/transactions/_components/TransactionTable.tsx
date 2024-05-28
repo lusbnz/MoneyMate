@@ -56,7 +56,7 @@ const columns: ColumnDef<TransactionHistoryRow>[] = [
   {
     accessorKey: "category",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Category" />
+      <DataTableColumnHeader column={column} title="Danh mục" />
     ),
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id));
@@ -71,7 +71,7 @@ const columns: ColumnDef<TransactionHistoryRow>[] = [
   {
     accessorKey: "description",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Description" />
+      <DataTableColumnHeader column={column} title="Mô tả" />
     ),
     cell: ({ row }) => (
       <div className="capitalize">{row.original.description}</div>
@@ -79,7 +79,7 @@ const columns: ColumnDef<TransactionHistoryRow>[] = [
   },
   {
     accessorKey: "date",
-    header: "Date",
+    header: "Thời gian",
     cell: ({ row }) => {
       const date = new Date(row.original.date);
       const formattedDate = date.toLocaleDateString("default", {
@@ -94,7 +94,7 @@ const columns: ColumnDef<TransactionHistoryRow>[] = [
   {
     accessorKey: "type",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Type" />
+      <DataTableColumnHeader column={column} title="Loại" />
     ),
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id));
@@ -104,7 +104,7 @@ const columns: ColumnDef<TransactionHistoryRow>[] = [
         className={cn(
           "capitalize rounded-lg text-center p-2",
           row.original.type === "income" &&
-            "bg-emerald-400/10 text-emerald-500",
+          "bg-emerald-400/10 text-emerald-500",
           row.original.type === "expense" && "bg-red-400/10 text-red-500"
         )}
       >
@@ -115,7 +115,7 @@ const columns: ColumnDef<TransactionHistoryRow>[] = [
   {
     accessorKey: "amount",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Amount" />
+      <DataTableColumnHeader column={column} title="Giá trị" />
     ),
     cell: ({ row }) => (
       <p className="text-md rounded-lg bg-gray-400/5 p-2 text-center font-medium">
@@ -124,7 +124,7 @@ const columns: ColumnDef<TransactionHistoryRow>[] = [
     ),
   },
   {
-    id: "actions",
+    id: "Hành động",
     enableHiding: false,
     cell: ({ row }) => <RowActions transaction={row.original} />,
   },
@@ -188,18 +188,18 @@ function TransactionTable({ from, to }: Props) {
         <div className="flex gap-2">
           {table.getColumn("category") && (
             <DataTableFacetedFilter
-              title="Category"
+              title="Danh mục"
               column={table.getColumn("category")}
               options={categoriesOptions}
             />
           )}
           {table.getColumn("type") && (
             <DataTableFacetedFilter
-              title="Type"
+              title="Loại"
               column={table.getColumn("type")}
               options={[
-                { label: "Income", value: "income" },
-                { label: "Expense", value: "expense" },
+                { label: "Thu nhập", value: "income" },
+                { label: "Chi tiêu", value: "expense" },
               ]}
             />
           )}
@@ -223,7 +223,7 @@ function TransactionTable({ from, to }: Props) {
             }}
           >
             <DownloadIcon className="mr-2 h-4 w-4" />
-            Export CSV
+            Xuất file CSV
           </Button>
           <DataTableViewOptions table={table} />
         </div>
@@ -240,9 +240,9 @@ function TransactionTable({ from, to }: Props) {
                         {header.isPlaceholder
                           ? null
                           : flexRender(
-                              header.column.columnDef.header,
-                              header.getContext()
-                            )}
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
                       </TableHead>
                     );
                   })}
@@ -272,7 +272,7 @@ function TransactionTable({ from, to }: Props) {
                     colSpan={columns.length}
                     className="h-24 text-center"
                   >
-                    No results.
+                    Không có kết quả.
                   </TableCell>
                 </TableRow>
               )}
@@ -286,7 +286,7 @@ function TransactionTable({ from, to }: Props) {
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
-            Previous
+            Trước
           </Button>
           <Button
             variant="outline"
@@ -294,7 +294,7 @@ function TransactionTable({ from, to }: Props) {
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
-            Next
+            Sau
           </Button>
         </div>
       </SkeletonWrapper>
@@ -317,12 +317,12 @@ function RowActions({ transaction }: { transaction: TransactionHistoryRow }) {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant={"ghost"} className="h-8 w-8 p-0 ">
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">Mở Menu</span>
             <MoreHorizontal className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>Actions</DropdownMenuLabel>
+          <DropdownMenuLabel>Hành động</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem
             className="flex items-center gap-2"
@@ -331,7 +331,7 @@ function RowActions({ transaction }: { transaction: TransactionHistoryRow }) {
             }}
           >
             <TrashIcon className="h-4 w-4 text-muted-foreground" />
-            Delete
+            Xóa
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

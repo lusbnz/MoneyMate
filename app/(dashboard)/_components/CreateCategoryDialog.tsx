@@ -83,7 +83,7 @@ function CreateCategoryDialog({ type, successCallback, trigger }: Props) {
       setOpen((prev) => !prev);
     },
     onError: () => {
-      toast.error("Something went wrong", {
+      toast.error("Có lỗi xảy ra, vui lòng thử lại", {
         id: "create-category",
       });
     },
@@ -91,7 +91,7 @@ function CreateCategoryDialog({ type, successCallback, trigger }: Props) {
 
   const onSubmit = useCallback(
     (values: CreateCategorySchemaType) => {
-      toast.loading("Creating category...", {
+      toast.loading("Đang tạo danh mục...", {
         id: "create-category",
       });
       mutate(values);
@@ -110,14 +110,14 @@ function CreateCategoryDialog({ type, successCallback, trigger }: Props) {
             className="flex border-separate items-center justify-start roudned-none border-b px-3 py-3 text-muted-foreground"
           >
             <PlusSquare className="mr-2 h-4 w-4" />
-            Create new
+            Tạo mới
           </Button>
         )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>
-            Create
+            Tạo danh mục
             <span
               className={cn(
                 "m-1",
@@ -126,7 +126,6 @@ function CreateCategoryDialog({ type, successCallback, trigger }: Props) {
             >
               {type}
             </span>
-            category
           </DialogTitle>
           <DialogDescription>
             Categories are used to group your transactions
@@ -169,14 +168,14 @@ function CreateCategoryDialog({ type, successCallback, trigger }: Props) {
                                 {field.value}
                               </span>
                               <p className="text-xs text-muted-foreground">
-                                Click to change
+                                Nhân để thay đổi
                               </p>
                             </div>
                           ) : (
                             <div className="flex flex-col items-center gap-2">
                               <CircleOff className="h-[48px] w-[48px]" />
                               <p className="text-xs text-muted-foreground">
-                                Click to select
+                                Nhấn để chọn
                               </p>
                             </div>
                           )}
@@ -194,7 +193,7 @@ function CreateCategoryDialog({ type, successCallback, trigger }: Props) {
                     </Popover>
                   </FormControl>
                   <FormDescription>
-                    This is how your category will appear in the app
+                    Danh mục sẽ được hiển thị như thế nào
                   </FormDescription>
                 </FormItem>
               )}
@@ -210,11 +209,11 @@ function CreateCategoryDialog({ type, successCallback, trigger }: Props) {
                 form.reset();
               }}
             >
-              Cancel
+              Hủy
             </Button>
           </DialogClose>
           <Button onClick={form.handleSubmit(onSubmit)} disabled={isPending}>
-            {!isPending && "Create"}
+            {!isPending && "Tạo"}
             {isPending && <Loader2 className="animate-spin" />}
           </Button>
         </DialogFooter>

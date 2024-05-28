@@ -71,7 +71,7 @@ function CreateTransactionDialog({ trigger, type }: Props) {
   const { mutate, isPending } = useMutation({
     mutationFn: CreateTransaction,
     onSuccess: () => {
-      toast.success("Transaction created successfully 🎉", {
+      toast.success("Giao dịch được tạo thành công 🎉", {
         id: "create-transaction",
       });
 
@@ -83,7 +83,6 @@ function CreateTransactionDialog({ trigger, type }: Props) {
         category: undefined,
       });
 
-      // After creating a transaction, we need to invalidate the overview query which will refetch data in the homepage
       queryClient.invalidateQueries({
         queryKey: ["overview"],
       });
@@ -94,7 +93,7 @@ function CreateTransactionDialog({ trigger, type }: Props) {
 
   const onSubmit = useCallback(
     (values: CreateTransactionSchemaType) => {
-      toast.loading("Creating transaction...", { id: "create-transaction" });
+      toast.loading("Đang tạo giao dịch...", { id: "create-transaction" });
 
       mutate({
         ...values,
@@ -110,7 +109,7 @@ function CreateTransactionDialog({ trigger, type }: Props) {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>
-            Create a new{" "}
+            Tạo mới một giao dịch {" "}
             <span
               className={cn(
                 "m-1",
@@ -119,7 +118,6 @@ function CreateTransactionDialog({ trigger, type }: Props) {
             >
               {type}
             </span>
-            transaction
           </DialogTitle>
         </DialogHeader>
         <Form {...form}>
@@ -134,7 +132,7 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                     <Input defaultValue={""} {...field} />
                   </FormControl>
                   <FormDescription>
-                    Transaction description (optional)
+                    Mô tả giao dịch (tùy chọn)
                   </FormDescription>
                 </FormItem>
               )}
@@ -144,12 +142,12 @@ function CreateTransactionDialog({ trigger, type }: Props) {
               name="amount"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Amount</FormLabel>
+                  <FormLabel>Giá trị</FormLabel>
                   <FormControl>
                     <Input defaultValue={0} type="number" {...field} />
                   </FormControl>
                   <FormDescription>
-                    Transaction amount (required)
+                    Giá trị giao dịch (bắt buộc)
                   </FormDescription>
                 </FormItem>
               )}
@@ -161,7 +159,7 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                 name="category"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel>Category</FormLabel>
+                    <FormLabel>Danh mục</FormLabel>
                     <FormControl>
                       <CategoryPicker
                         type={type}
@@ -169,7 +167,7 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                       />
                     </FormControl>
                     <FormDescription>
-                      Select a category for this transaction
+                      Lựa chọn một danh mục cho giao dịch
                     </FormDescription>
                   </FormItem>
                 )}
@@ -180,7 +178,7 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                 name="date"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel>Transaction date</FormLabel>
+                    <FormLabel>Thời gian giao dịch</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
                         <FormControl>
@@ -194,7 +192,7 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                             {field.value ? (
                               format(field.value, "PPP")
                             ) : (
-                              <span>Pick a date</span>
+                              <span>Chọn ngày</span>
                             )}
                             <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                           </Button>
@@ -212,7 +210,7 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                         />
                       </PopoverContent>
                     </Popover>
-                    <FormDescription>Select a date for this</FormDescription>
+                    <FormDescription>Chọn thời gian cho giao dịch</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -229,7 +227,7 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                 form.reset();
               }}
             >
-              Cancel
+              Hủy
             </Button>
           </DialogClose>
           <Button onClick={form.handleSubmit(onSubmit)} disabled={isPending}>

@@ -34,7 +34,6 @@ async function getHistoryPeriods(userId: string) {
 
   const years = result.map((el) => el.year);
   if (years.length === 0) {
-    // Return the current year
     return [new Date().getFullYear()];
   }
 

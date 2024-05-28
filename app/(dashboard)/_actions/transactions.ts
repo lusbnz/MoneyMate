@@ -28,13 +28,10 @@ export async function CreateTransaction(form: CreateTransactionSchemaType) {
   });
 
   if (!categoryRow) {
-    throw new Error("category not found");
+    throw new Error("Không tìm thấy danh mục");
   }
 
-  // NOTE: don't make confusion between $transaction ( prisma ) and prisma.transaction (table)
-
   await prisma.$transaction([
-    // Create user transaction
     prisma.transaction.create({
       data: {
         userId: user.id,
@@ -47,7 +44,6 @@ export async function CreateTransaction(form: CreateTransactionSchemaType) {
       },
     }),
 
-    // Update month aggregate table
     prisma.monthHistory.upsert({
       where: {
         day_month_year_userId: {
@@ -75,7 +71,6 @@ export async function CreateTransaction(form: CreateTransactionSchemaType) {
       },
     }),
 
-    // Update year aggreate
     prisma.yearHistory.upsert({
       where: {
         month_year_userId: {
